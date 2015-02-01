@@ -1,0 +1,26 @@
+#CreativeTabs
+itemGroup.ie2.blocks=Infused Earth 2
+itemGroup.ie2.network=Infused Earth 2 - Network
+itemGroup.ie2.items=Infused Earth 2 - Items
+
+
+#Items
+item.item_dustSelenium.name=Selenium Dust
+item.item_gemTopas.name=Topas
+item.item_gemAmethyst.name=Amethyst
+item.item_gemSapphire.name=Sapphire
+item.item_gemRuby.name=Ruby
+item.item_pickaxeSelenium.name=Selenium Pickaxe
+item.item_pickaxeRuby.name=Ruby Pickaxe
+item.item_pickaxeSapphire.name=Sapphire Pickaxe
+item.item_pickaxeAmethyst.name=Amethyst Pickaxe
+item.item_pickaxeTopas.name=Topas Pickaxe
+item.item_ingotSelenium.name=Selenium Ingot
+
+#Blocks
+block_Selenium_Ore.name=Selenium Ore
+block_Topas_Ore.name=Topas Ore
+block_Amethyst_Ore.name=Amethyst Ore
+block_Sapphire_Ore.name=Sapphire Ore
+block_Ruby_Ore.name=Ruby Ore
+block_Selenium.name=Selenium Block
