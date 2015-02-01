@@ -91,15 +91,12 @@ public class tileToolExtractor extends TileEntity implements ISidedInventory {
                 return itemstack;
             }
         } else {
-            LogHelper.debug("Clicked: " + par1 + " | Ammount 2 Drain: " + par2);
             if (this.furnaceItemStacks[27] != null && this.furnaceItemStacks[27].getItem() instanceof IHarvesttool) {
                 IHarvesttool tool = (IHarvesttool) this.furnaceItemStacks[27].getItem();
                 DigitalItemstack harvester = tool.getItemstackInSlot(this.furnaceItemStacks[27], par1);
                 if (harvester != null) {
-                    LogHelper.debug("Size: " + harvester.stackSize);
                     ItemStack userstack;
                     DigitalItemstack toolstack;
-
                     toolstack = new DigitalItemstack(harvester.getItem(), (harvester.stackSize - par2), harvester.getItemDamage());
                     if (toolstack.stackSize <= 0) {
                         if (tool.clearItemstackInSlot(this.furnaceItemStacks[27], par1)) {
@@ -195,23 +192,21 @@ public class tileToolExtractor extends TileEntity implements ISidedInventory {
             if (this.furnaceItemStacks[27] != null && this.furnaceItemStacks[27].getItem() instanceof IHarvesttool) {
                 IHarvesttool tool = (IHarvesttool) this.furnaceItemStacks[27].getItem();
                 ttu++;
-                if (ttu >= 20) {
-                    if (worldObj.isBlockIndirectlyGettingPowered(xCoord, yCoord, zCoord)) {
-                        for (int i = 0; i < 27; i++) {
-                            if (tool.getItemstackInSlot(this.furnaceItemStacks[27], i) != null) {
-                                DigitalItemstack stack = tool.getItemstackInSlot(this.furnaceItemStacks[27], i);
-                                ItemStack tempStack;
-                                if(stack.stackSize > 64){
-                                    tempStack = new ItemStack(stack.getItem(),64,stack.getItemDamage());
-                                } else {
-                                    tempStack = new ItemStack(stack.getItem(),stack.stackSize,stack.getItemDamage());
-                                }
-                                int used = Utils.addToRandomInventoryAround(worldObj, xCoord, yCoord, zCoord, tempStack);
-                                LogHelper.debug("used: "+used);
-                                if(used > 0){
-                                    this.decrStackSize(i,used);
-                                    break;
-                                }
+                if (ttu >= 1) {
+                    for (int i = 0; i < 27; i++) {
+                        if (tool.getItemstackInSlot(this.furnaceItemStacks[27], i) != null) {
+                            DigitalItemstack stack = tool.getItemstackInSlot(this.furnaceItemStacks[27], i);
+                            ItemStack tempStack;
+                            if (stack.stackSize > 64) {
+                                tempStack = new ItemStack(stack.getItem(), 64, stack.getItemDamage());
+                            } else {
+                                tempStack = new ItemStack(stack.getItem(), stack.stackSize, stack.getItemDamage());
+                            }
+                            int used = Utils.addToRandomInventoryAround(worldObj, xCoord, yCoord, zCoord, tempStack);
+                            LogHelper.debug("used: " + used);
+                            if (used > 0) {
+                                this.decrStackSize(i, used);
+                                break;
                             }
                         }
                     }
