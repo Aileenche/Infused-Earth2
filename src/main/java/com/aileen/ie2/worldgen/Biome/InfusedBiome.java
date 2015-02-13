@@ -3,6 +3,7 @@ package com.aileen.ie2.worldgen.Biome;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.biome.BiomeGenBase;
 
 /**
@@ -12,9 +13,8 @@ public class InfusedBiome extends BiomeGenBase {
     public InfusedBiome(int par1) {
         super(par1);
         setBiomeName("InfusedBiome");
-        //setMinMaxHeight(0.2F, 0.0F);
-        //this.topBlock = (byte) Block.grass.blockID;
-       // this.fillerBlock = (byte) Block.dirt.blockID;
+        this.topBlock = Blocks.grass;
+        this.fillerBlock = Blocks.dirt;
         this.theBiomeDecorator.treesPerChunk = 3;
         this.theBiomeDecorator.generateLakes = false;
     }

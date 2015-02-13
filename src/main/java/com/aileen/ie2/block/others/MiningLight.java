@@ -1,6 +1,5 @@
 package com.aileen.ie2.block.others;
 
-import com.aileen.ie2.creativeTab.CreativeTabIE2;
 import com.aileen.ie2.entity.Particles;
 import com.aileen.ie2.handler.DataHandler;
 import com.aileen.ie2.libs.Reference;
@@ -10,7 +9,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -24,7 +22,7 @@ public class MiningLight extends Block {
     private String unlocalizedName;
 
     public MiningLight(String unlocalizedName) {
-        super(Material.rock);
+        super(Material.redstoneLight);
         this.unlocalizedName = unlocalizedName;
         this.setLightLevel(1);
         this.setBlockBounds(0.4F, 0.6F, 0.4F, 0.6F, 1.0F, 0.6F);
@@ -87,4 +85,9 @@ public class MiningLight extends Block {
         return 0;
     }
 
+    @Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int wx, int wy, int wz)
+    {
+        return null;
+    }
 }

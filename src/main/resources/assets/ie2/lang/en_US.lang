@@ -11,16 +11,38 @@ item.item_gemAmethyst.name=Amethyst
 item.item_gemSapphire.name=Sapphire
 item.item_gemRuby.name=Ruby
 item.item_pickaxeSelenium.name=Selenium Pickaxe
+item.item_pickaxeTitanium.name=Titanium Pickaxe
 item.item_pickaxeRuby.name=Ruby Pickaxe
 item.item_pickaxeSapphire.name=Sapphire Pickaxe
 item.item_pickaxeAmethyst.name=Amethyst Pickaxe
 item.item_pickaxeTopas.name=Topas Pickaxe
+item.item_axeSelenium.name=Selenium Axe
+item.item_axeTitanium.name=Titanium Axe
+item.item_axeRuby.name=Ruby Axe
+item.item_axeSapphire.name=Sapphire Axe
+item.item_axeAmethyst.name=Amethyst Axe
+item.item_axeTopas.name=Topas Axe
 item.item_ingotSelenium.name=Selenium Ingot
+item.item_stickSelenium.name=Selenium Stick
+item.item_ingotTitanium.name=Titanium Ingot
+item.item_stickTitanium.name=Titanium Stick
 
 #Blocks
+block_Titanium_Ore.name=Titanium Ore
 block_Selenium_Ore.name=Selenium Ore
 block_Topas_Ore.name=Topas Ore
 block_Amethyst_Ore.name=Amethyst Ore
 block_Sapphire_Ore.name=Sapphire Ore
 block_Ruby_Ore.name=Ruby Ore
+block_Titanium.name=Titanium Block
 block_Selenium.name=Selenium Block
+block_Ruby.name=Ruby Block
+block_Sapphire.name=Sapphire Block
+block_Amethyst.name=Amethyst Block
+block_Topas.name=Topas Block
+block_ToolExtractor.name=Tool Extractor
+block_ToolRepairStation.name=Tool Repair Station
+block_Tank.name=Tank
+
+#Deaths
+death.attack.controller=%s died while try to hit an claimed Controller. That sucks....

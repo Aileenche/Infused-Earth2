@@ -1,6 +1,7 @@
 package com.aileen.ie2.worldgen;
 
 import com.aileen.ie2.handler.DataHandler;
+import com.aileen.ie2.helper.LogHelper;
 import cpw.mods.fml.common.IWorldGenerator;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -30,6 +31,7 @@ public class WorldGen implements IWorldGenerator {
                     genAmethyst(world, random, chunkX * 16, chunkZ * 16);
                     genTopas(world, random, chunkX * 16, chunkZ * 16);
                     genSapphire(world, random, chunkX * 16, chunkZ * 16);
+                    genTitanium(world, random, chunkX * 16, chunkZ * 16);
                     gen_flowers(world, random, chunkX * 16, chunkZ * 16);
                     //Stage 2
                     genSelenium(world, random, chunkX * 16, chunkZ * 16);
@@ -37,6 +39,7 @@ public class WorldGen implements IWorldGenerator {
                     genAmethyst(world, random, chunkX * 16, chunkZ * 16);
                     genTopas(world, random, chunkX * 16, chunkZ * 16);
                     genSapphire(world, random, chunkX * 16, chunkZ * 16);
+                    genTitanium(world, random, chunkX * 16, chunkZ * 16);
                     gen_flowers(world, random, chunkX * 16, chunkZ * 16);
                     gen_natureOres(world, random, chunkX * 16, chunkZ * 16);
                 } else {
@@ -45,6 +48,7 @@ public class WorldGen implements IWorldGenerator {
                     genAmethyst(world, random, chunkX * 16, chunkZ * 16);
                     genTopas(world, random, chunkX * 16, chunkZ * 16);
                     genSapphire(world, random, chunkX * 16, chunkZ * 16);
+                    genTitanium(world, random, chunkX * 16, chunkZ * 16);
                     gen_flowers(world, random, chunkX * 16, chunkZ * 16);
                 }
                 break;
@@ -111,16 +115,24 @@ public class WorldGen implements IWorldGenerator {
     }
 
     private void genTopas(World world, Random rand, int chunkX, int chunkZ) {
-        for (int i = 0; i < DataHandler.worldgen_block_Topas_Ore_vpc*DataHandler.worldgen_ore_multiplier; i++) {
+        for (int i = 0; i < (DataHandler.worldgen_block_Topas_Ore_vpc*DataHandler.worldgen_ore_multiplier); i++) {
             int randPosX = chunkX + rand.nextInt(16);
             int randPosY = rand.nextInt(DataHandler.worldgen_block_Topas_Ore_maxheight);
             int randPosZ = chunkZ + rand.nextInt(16);
             new WorldGenMinable(DataHandler.block_Topas_Ore, DataHandler.worldgen_block_Topas_Ore_vs).generate(world, rand, randPosX, randPosY, randPosZ);
         }
     }
+    private void genTitanium(World world, Random rand, int chunkX, int chunkZ) {
+        for (int i = 0; i < (DataHandler.worldgen_block_Titanium_Ore_vpc*DataHandler.worldgen_ore_multiplier); i++) {
+            int randPosX = chunkX + rand.nextInt(16);
+            int randPosY = rand.nextInt(DataHandler.worldgen_block_Titanium_Ore_maxheight);
+            int randPosZ = chunkZ + rand.nextInt(16);
+            new WorldGenMinable(DataHandler.block_Titanium_Ore, DataHandler.worldgen_block_Titanium_Ore_vs).generate(world, rand, randPosX, randPosY, randPosZ);
+        }
+    }
 
     private void genAmethyst(World world, Random rand, int chunkX, int chunkZ) {
-        for (int i = 0; i < DataHandler.worldgen_block_Amethyst_Ore_vpc*DataHandler.worldgen_ore_multiplier; i++) {
+        for (int i = 0; i < (DataHandler.worldgen_block_Amethyst_Ore_vpc*DataHandler.worldgen_ore_multiplier); i++) {
             int randPosX = chunkX + rand.nextInt(16);
             int randPosY = rand.nextInt(DataHandler.worldgen_block_Amethyst_Ore_maxheight);
             int randPosZ = chunkZ + rand.nextInt(16);
@@ -129,7 +141,7 @@ public class WorldGen implements IWorldGenerator {
     }
 
     private void genSapphire(World world, Random rand, int chunkX, int chunkZ) {
-        for (int i = 0; i < DataHandler.worldgen_block_Sapphire_Ore_vpc*DataHandler.worldgen_ore_multiplier; i++) {
+        for (int i = 0; i < (DataHandler.worldgen_block_Sapphire_Ore_vpc*DataHandler.worldgen_ore_multiplier); i++) {
             int randPosX = chunkX + rand.nextInt(16);
             int randPosY = rand.nextInt(DataHandler.worldgen_block_Sapphire_Ore_maxheight);
             int randPosZ = chunkZ + rand.nextInt(16);
@@ -138,7 +150,7 @@ public class WorldGen implements IWorldGenerator {
     }
 
     private void genRuby(World world, Random rand, int chunkX, int chunkZ) {
-        for (int i = 0; i < DataHandler.worldgen_block_Ruby_Ore_vpc*DataHandler.worldgen_ore_multiplier; i++) {
+        for (int i = 0; i < (DataHandler.worldgen_block_Ruby_Ore_vpc*DataHandler.worldgen_ore_multiplier); i++) {
             int randPosX = chunkX + rand.nextInt(16);
             int randPosY = rand.nextInt(DataHandler.worldgen_block_Ruby_Ore_maxheight);
             int randPosZ = chunkZ + rand.nextInt(16);
@@ -147,7 +159,7 @@ public class WorldGen implements IWorldGenerator {
     }
 
     private void genSelenium(World world, Random rand, int chunkX, int chunkZ) {
-        for (int i = 0; i < DataHandler.worldgen_block_Selenium_Ore_vpc*DataHandler.worldgen_ore_multiplier; i++) {
+        for (int i = 0; i < (DataHandler.worldgen_block_Selenium_Ore_vpc*DataHandler.worldgen_ore_multiplier); i++) {
             int randPosX = chunkX + rand.nextInt(16);
             int randPosY = rand.nextInt(DataHandler.worldgen_block_Selenium_Ore_maxheight);
             int randPosZ = chunkZ + rand.nextInt(16);

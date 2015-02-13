@@ -15,7 +15,6 @@ import com.aileen.ie2.item.ModItems;
 import com.aileen.ie2.libs.Reference;
 import com.aileen.ie2.material.Materials;
 import com.aileen.ie2.proxy.CommonProxy;
-import com.aileen.ie2.proxy.IProxy;
 import com.aileen.ie2.recipe.MacerateableOresHandler;
 import com.aileen.ie2.recipe.ModRecipes;
 import com.aileen.ie2.worldgen.Biome.ModBiome;
@@ -25,7 +24,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
 
 
 @Mod(modid = Reference.MOD_ID, version = Reference.VERSION_NUMBER, name = Reference.MOD_NAME, dependencies = Reference.DEPENDENCIES)
@@ -39,7 +37,6 @@ public class InfusedEarth {
 
     @Mod.EventHandler
     public void serverStarting(FMLServerStartingEvent event) {
-
         //CommandHandler.initCommands(event);
     }
 
@@ -82,6 +79,7 @@ public class InfusedEarth {
         MacerateableOresHandler.init();
 
         GameRegistry.registerWorldGenerator(new WorldGen(), 1);
+
         //Initialize Entities
         //ModEntitys.preInit();
     }
@@ -89,12 +87,10 @@ public class InfusedEarth {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
 
-        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
-
         //GameRegistry.registerPlayerTracker(new PlayerHandler());
 
         //Register the GuiHandler
-        //NetworkRegistry.instance().registerGuiHandler(instance, new GuiHandler());
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 
         //initialize localization helper
         //LocalizationHelper.init();
@@ -115,7 +111,7 @@ public class InfusedEarth {
         //proxy.registerEvents();
 
         // Initialize mod tile entities
-         proxy.registerTileEntities();
+        proxy.registerTileEntities();
 
         ConfigurationHandler.save();
 
@@ -125,9 +121,9 @@ public class InfusedEarth {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
-        for (String ores: OreDictionary.getOreNames()) {
-            LogHelper.debug(ores);
-        }
+//        for (String ores: OreDictionary.getOreNames()) {
+//            LogHelper.debug(ores);
+//        }
     }
 
     @Mod.EventHandler
@@ -135,6 +131,6 @@ public class InfusedEarth {
         InterModCommsHandler.instance.handleIMC(theIMC);
     }
 
-    //TODO MATERIALIDEE PICKAXE - TITAN
+    //TODO TRANSFERIDEE Enderpickaxe
 
 }

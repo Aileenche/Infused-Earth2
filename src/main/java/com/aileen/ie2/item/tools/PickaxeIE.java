@@ -3,7 +3,6 @@ package com.aileen.ie2.item.tools;
 import com.aileen.ie2.api.IHarvesttool;
 import com.aileen.ie2.creativeTab.CreativeTabIE2;
 import com.aileen.ie2.handler.DataHandler;
-import com.aileen.ie2.helper.LogHelper;
 import com.aileen.ie2.helper.NBTHelper;
 import com.aileen.ie2.libs.DigitalItemstack;
 import com.aileen.ie2.libs.Reference;
@@ -13,6 +12,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,7 +36,7 @@ import java.util.List;
  * Created by Aileen on 31.01.2015.
  */
 public class PickaxeIE extends ItemPickaxe implements IHarvesttool {
-    public float efficiencyOnProperMaterial = 4.0F;
+    public float efficiencyOnProperMaterial = 1.0F;
     public HashSet<Block> blackList = new HashSet<Block>();
     public float damageVsEntity;
     private String unlocalized_Name;
@@ -228,22 +228,22 @@ public class PickaxeIE extends ItemPickaxe implements IHarvesttool {
             tool.getTagCompound().removeTag("Items");
             DigitalItemstack[] storedItems = new DigitalItemstack[27];
             if (this.toolMaterial == DataHandler.TOPAS) {
-                storageMaxSize = (512);
+                storageMaxSize = (64);
             }
             if (this.toolMaterial == DataHandler.AMETHYST) {
-                storageMaxSize = (5000);
+                storageMaxSize = (128);
             }
             if (this.toolMaterial == DataHandler.SAPPHIRE) {
-                storageMaxSize = (50000);
+                storageMaxSize = (256);
             }
             if (this.toolMaterial == DataHandler.RUBY) {
-                storageMaxSize = (100000);
+                storageMaxSize = (512);
             }
             if (this.toolMaterial == DataHandler.SELENIUM) {
-                storageMaxSize = (1000000);
+                storageMaxSize = (1024);
             }
             if (this.toolMaterial == DataHandler.TITANIUM) {
-                storageMaxSize = (1000000);
+                storageMaxSize = (2048);
             }
             for (int i = 0; i < items.tagCount(); i++) {
                 NBTTagCompound slot = items.getCompoundTagAt(i);
@@ -290,11 +290,6 @@ public class PickaxeIE extends ItemPickaxe implements IHarvesttool {
                     newList.appendTag(cuSlot);
                 }
             }
-            for (int i = 0; i < storedItems.length; i++) {
-                if (storedItems[i] != null) {
-                    LogHelper.debug("#" + i + " -> " + storedItems[i].getDisplayName() + " | " + storedItems[i].stackSize);
-                }
-            }
             NBTTagCompound newNBT = new NBTTagCompound();
             newNBT.setTag("Tool", new NBTTagCompound());
             newNBT.setBoolean("charge", charge);
@@ -309,7 +304,7 @@ public class PickaxeIE extends ItemPickaxe implements IHarvesttool {
         return false;
     }
 
-    public float getStrVsBlock(ItemStack par1ItemStack, Block par2Block) {
+    public float func_150893_a(ItemStack par1ItemStack, Block par2Block) {
         if (par1ItemStack.getItemDamage() >= maxDamageEFF) {
             return 0.0F;
         }
@@ -343,7 +338,7 @@ public class PickaxeIE extends ItemPickaxe implements IHarvesttool {
 
     private void mineStack(World world, ItemStack stack, EntityPlayer player) {
         if (!world.isRemote) {
-            if (stack.stackSize > 0) {
+            if (stack != null && stack.stackSize > 0) {
                 float f = world.rand.nextFloat() * 0.8F + 0.1F;
                 float f1 = world.rand.nextFloat() * 0.8F + 0.1F;
                 float f2 = world.rand.nextFloat() * 0.8F + 0.1F;
@@ -389,7 +384,6 @@ public class PickaxeIE extends ItemPickaxe implements IHarvesttool {
             } else {
                 info.add(EnumChatFormatting.RED + "Storage Mode: Drop!");
             }
-
             NBTTagList items = itemstack.stackTagCompound.getTagList("Items", Constants.NBT.TAG_COMPOUND);
             DigitalItemstack[] storedItems = new DigitalItemstack[27];
             for (int i = 0; i < items.tagCount(); i++) {

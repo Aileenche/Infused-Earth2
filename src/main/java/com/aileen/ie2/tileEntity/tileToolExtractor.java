@@ -1,7 +1,6 @@
 package com.aileen.ie2.tileEntity;
 
 import com.aileen.ie2.api.IHarvesttool;
-import com.aileen.ie2.helper.LogHelper;
 import com.aileen.ie2.libs.DigitalItemstack;
 import com.aileen.ie2.libs.Utils;
 import net.minecraft.entity.player.EntityPlayer;
@@ -192,7 +191,7 @@ public class tileToolExtractor extends TileEntity implements ISidedInventory {
             if (this.furnaceItemStacks[27] != null && this.furnaceItemStacks[27].getItem() instanceof IHarvesttool) {
                 IHarvesttool tool = (IHarvesttool) this.furnaceItemStacks[27].getItem();
                 ttu++;
-                if (ttu >= 1) {
+                if (ttu >= 20 && worldObj.isBlockIndirectlyGettingPowered(this.xCoord,this.yCoord,this.zCoord)) {
                     for (int i = 0; i < 27; i++) {
                         if (tool.getItemstackInSlot(this.furnaceItemStacks[27], i) != null) {
                             DigitalItemstack stack = tool.getItemstackInSlot(this.furnaceItemStacks[27], i);
@@ -203,7 +202,6 @@ public class tileToolExtractor extends TileEntity implements ISidedInventory {
                                 tempStack = new ItemStack(stack.getItem(), stack.stackSize, stack.getItemDamage());
                             }
                             int used = Utils.addToRandomInventoryAround(worldObj, xCoord, yCoord, zCoord, tempStack);
-                            LogHelper.debug("used: " + used);
                             if (used > 0) {
                                 this.decrStackSize(i, used);
                                 break;
@@ -242,12 +240,9 @@ public class tileToolExtractor extends TileEntity implements ISidedInventory {
 
     @Override
     public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-        LogHelper.debug("Try insering " + itemstack.getDisplayName() + " into Slot " + i);
         if (i == 27 && itemstack.getItem() instanceof IHarvesttool) {
-            LogHelper.debug("Returning true");
             return true;
         }
-        LogHelper.debug("Returning false");
         return false;
     }
 
@@ -264,7 +259,6 @@ public class tileToolExtractor extends TileEntity implements ISidedInventory {
      * side
      */
     public boolean canInsertItem(int slot, ItemStack par2ItemStack, int side) {
-        LogHelper.debug("Try insering " + par2ItemStack.getDisplayName() + " into Slot " + slot);
         if (slot == 27 && par2ItemStack.getItem() instanceof IHarvesttool) {
             return true;
         }

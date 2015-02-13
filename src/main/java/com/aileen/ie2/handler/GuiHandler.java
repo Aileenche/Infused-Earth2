@@ -1,9 +1,15 @@
 package com.aileen.ie2.handler;
 
+import com.aileen.ie2.client.gui.GuiNetController;
 import com.aileen.ie2.client.gui.GuiToolExtractor;
+import com.aileen.ie2.client.gui.GuiToolRepairStation;
+import com.aileen.ie2.container.ContainerNetController;
 import com.aileen.ie2.container.ContainerToolExtractor;
+import com.aileen.ie2.container.ContainerToolRepairStation;
 import com.aileen.ie2.helper.LogHelper;
 import com.aileen.ie2.libs.GuiIds;
+import com.aileen.ie2.tileEntity.TileToolRepairStation;
+import com.aileen.ie2.tileEntity.tileController;
 import com.aileen.ie2.tileEntity.tileToolExtractor;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
@@ -28,17 +34,16 @@ public class GuiHandler implements IGuiHandler {
 //            TileNetGenerator tileNetGenerator = (TileNetGenerator) world.getBlockTileEntity(x, y, z);
 //            return new ContainerNetGenerator(entityPlayer.inventory, tileNetGenerator);
         } else if (ID == GuiIds.NETCONTROLLER) {
-//            TileNetworkBlockController tileNetworkBlockController = (TileNetworkBlockController) world.getBlockTileEntity(x, y, z);
-//            return new ContainerNetController(entityPlayer.inventory, tileNetworkBlockController);
+            tileController tileNetworkBlockController = (tileController) world.getTileEntity(x, y, z);
+            return new ContainerNetController(entityPlayer.inventory, tileNetworkBlockController);
         } else if (ID == GuiIds.MACERATOR) {
 //            TileMacerator tileMacerator = (TileMacerator) world.getBlockTileEntity(x, y, z);
 //            return new ContainerMacerator(entityPlayer.inventory, tileMacerator);
         } else if (ID == GuiIds.TOOLREPAIRSTATION) {
-//            TileToolRepairStation tileToolRepairStation = (TileToolRepairStation) world.getBlockTileEntity(x, y, z);
-//            return new ContainerToolRepairStation(entityPlayer.inventory, tileToolRepairStation);
+            TileToolRepairStation tileToolRepairStation = (TileToolRepairStation) world.getTileEntity(x, y, z);
+            return new ContainerToolRepairStation(entityPlayer.inventory, tileToolRepairStation);
         } else if (ID == GuiIds.TOOLEXTRACTOR) {
             tileToolExtractor tileToolExtractor = (tileToolExtractor) world.getTileEntity(x, y, z);
-            LogHelper.debug("ServerGuiHandler called -> ID: "+ID);
             return new ContainerToolExtractor(entityPlayer.inventory, tileToolExtractor);
         } else if (ID == GuiIds.NETCHEST) {
 //            TileNetworkBlockChest tileNetworkBlockChest = (TileNetworkBlockChest) world.getBlockTileEntity(x, y, z);
@@ -59,16 +64,15 @@ public class GuiHandler implements IGuiHandler {
 //            TileNetGenerator tileNetGenerator = (TileNetGenerator) world.getBlockTileEntity(x, y, z);
 //            return new GuiNetGenerator(entityPlayer.inventory, tileNetGenerator);
         } else if (ID == GuiIds.NETCONTROLLER) {
-//            TileNetworkBlockController tileNetworkBlockController = (TileNetworkBlockController) world.getBlockTileEntity(x, y, z);
-//            return new GuiNetController(entityPlayer.inventory, tileNetworkBlockController);
+            tileController tileNetworkBlockController = (tileController) world.getTileEntity(x, y, z);
+            return new GuiNetController(entityPlayer.inventory, tileNetworkBlockController);
         } else if (ID == GuiIds.MACERATOR) {
 //            TileMacerator tileMacerator = (TileMacerator) world.getBlockTileEntity(x, y, z);
 //            return new GuiMacerator(entityPlayer.inventory, tileMacerator);
         } else if (ID == GuiIds.TOOLREPAIRSTATION) {
-//            TileToolRepairStation tileToolRepairStation = (TileToolRepairStation) world.getBlockTileEntity(x, y, z);
-//            return new GuiToolRepairStation(entityPlayer.inventory, tileToolRepairStation);
+            TileToolRepairStation tileToolRepairStation = (TileToolRepairStation) world.getTileEntity(x, y, z);
+            return new GuiToolRepairStation(entityPlayer.inventory, tileToolRepairStation);
         } else if (ID == GuiIds.TOOLEXTRACTOR) {
-            LogHelper.debug("ClientGuiHandler called -> ID: "+ID);
             tileToolExtractor tileToolExtractor = (tileToolExtractor) world.getTileEntity(x, y, z);
             return new GuiToolExtractor(entityPlayer.inventory, tileToolExtractor);
         } else if (ID == GuiIds.NETCHEST) {
